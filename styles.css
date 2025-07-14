@@ -1,14 +1,23 @@
 /* Estilos generales */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9;
+    background-color: #fff5f7; /* Fondo rosa muy claro */
     margin: 0;
     padding: 20px;
 }
 
 h1 {
     text-align: center;
-    color: #d81b60; /* Rosa oscuro para el título principal */
+    color: #c2185b; /* Rosa oscuro */
+    margin-bottom: 10px;
+    font-size: 2.2em;
+}
+
+.subtitulo {
+    text-align: center;
+    color: #880e4f;
+    margin-bottom: 30px;
+    font-size: 1.1em;
 }
 
 /* Contenedor de semestres (horizontal) */
@@ -17,11 +26,12 @@ h1 {
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    padding: 20px;
 }
 
 /* Bloques de semestres */
 .semestre {
-    background-color: #fce4ec; /* Rosa claro */
+    background-color: #f8bbd0; /* Rosa medio */
     border-radius: 10px;
     padding: 15px;
     width: 200px;
@@ -29,25 +39,29 @@ h1 {
 }
 
 .semestre h3 {
-    color: #ad1457; /* Rosa oscuro */
+    color: #880e4f; /* Rosa oscuro */
     margin-top: 0;
-    border-bottom: 2px solid #f8bbd0;
+    border-bottom: 2px solid #ad1457;
     padding-bottom: 5px;
+    text-align: center;
 }
 
 /* Ramos */
 .ramo {
-    background-color: #f8bbd0; /* Rosa medio */
+    background-color: #fce4ec; /* Rosa claro */
     padding: 10px;
     margin: 8px 0;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s;
     text-align: center;
+    font-size: 0.9em;
+    border: none;
 }
 
 .ramo:hover {
-    background-color: #f48fb1; /* Rosa más intenso al pasar el mouse */
+    background-color: #f48fb1; /* Rosa más intenso */
+    transform: translateY(-2px);
 }
 
 .ramo.aprobado {
@@ -60,4 +74,5 @@ h1 {
     opacity: 0.6;
     cursor: not-allowed;
     background-color: #e0e0e0;
+    color: #666;
 }
