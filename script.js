@@ -141,61 +141,30 @@ const estadoRamos = {};
 // Generar la malla en el DOM
 function generarMalla() {
     const container = document.getElementById('malla-container');
-    
-    malla.años.forEach(año => {
-        const divAño = document.createElement('div');
-        divAño.className = 'año';
-        divAño.innerHTML = `<h2>${año.nombre}</h2>`;
-        container.appendChild(divAño);
+    container.className = 'semestres-container'; // Contenedor flexible horizontal
 
+    malla.años.forEach(año => {
         año.semestres.forEach(semestre => {
             const divSemestre = document.createElement('div');
             divSemestre.className = 'semestre';
-            divSemestre.innerHTML = `<h3>${semestre.nombre}</h3><div class="ramos-container"></div>`;
-            divAño.appendChild(divSemestre);
-
-            const ramosContainer = divSemestre.querySelector('.ramos-container');
+            divSemestre.innerHTML = `<h3>${semestre.nombre}</h3>`;
             
             semestre.ramos.forEach(ramo => {
                 estadoRamos[ramo.nombre] = false;
-                
                 const divRamo = document.createElement('div');
                 divRamo.className = 'ramo';
                 divRamo.textContent = ramo.nombre;
                 
-                // Bloquear ramos inicialmente (excepto los del primer semestre)
+                // Solo bloquear ramos que no sean del primer semestre
                 if (año.nombre !== "Primer Año" || semestre.nombre !== "I Semestre") {
                     divRamo.classList.add('bloqueado');
                 }
                 
                 divRamo.addEventListener('click', () => toggleRamo(ramo));
-                ramosContainer.appendChild(divRamo);
+                divSemestre.appendChild(divRamo);
             });
+            
+            container.appendChild(divSemestre);
         });
     });
 }
-
-// Aprobar/desaprobar ramos
-function toggleRamo(ramo) {
-    const ramoElement = [...document.querySelectorAll('.ramo')].find(el => el.textContent === ramo.nombre);
-    
-    if (ramoElement.classList.contains('bloqueado')) return; // No hacer nada si está bloqueado
-    
-    if (!estadoRamos[ramo.nombre]) {
-        // Aprobar ramo
-        estadoRamos[ramo.nombre] = true;
-        ramoElement.classList.add('aprobado');
-        
-        // Desbloquear ramos dependientes
-        ramo.abre.forEach(ramoDependiente => {
-            document.querySelectorAll('.ramo').forEach(el => {
-                if (el.textContent === ramoDependiente) {
-                    el.classList.remove('bloqueado');
-                }
-            });
-        });
-    }
-}
-
-// Inicializar al cargar la página
-window.onload = generarMalla;
