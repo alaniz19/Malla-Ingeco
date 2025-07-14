@@ -11,7 +11,7 @@ const malla = {
                         { nombre: "Aplicación de Manejo de Datos", abre: ["Estadistica I", "Tecnología y Sistemas de Información"] },
                         { nombre: "Metodos Matematicos I", abre: ["Estadistica I", "Metodos Matematicos II"] },
                         { nombre: "Introducción a la Economia", abre: ["Introducción a la Microeconomia", "Introducción a la Macroeconomia"] },
-                        { nombre: "Inglés I", abre: ["Ingles II"] }
+                        { nombre: "Inglés I", abre: ["Inglés II"] }
                     ]
                 },
                 {
