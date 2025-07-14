@@ -1,4 +1,4 @@
-// Datos COMPLETOS de la malla curricular
+ // Datos COMPLETOS de la malla (todos los semestres y ramos)
 const malla = {
     años: [
         {
@@ -168,3 +168,28 @@ function generarMalla() {
         });
     });
 }
+
+// Aprobar/desaprobar ramos
+function toggleRamo(ramo) {
+    const ramoElement = [...document.querySelectorAll('.ramo')].find(el => el.textContent === ramo.nombre);
+    
+    if (ramoElement.classList.contains('bloqueado')) return; // No hacer nada si está bloqueado
+    
+    if (!estadoRamos[ramo.nombre]) {
+        // Aprobar ramo
+        estadoRamos[ramo.nombre] = true;
+        ramoElement.classList.add('aprobado');
+        
+        // Desbloquear ramos dependientes
+        ramo.abre.forEach(ramoDependiente => {
+            document.querySelectorAll('.ramo').forEach(el => {
+                if (el.textContent === ramoDependiente) {
+                    el.classList.remove('bloqueado');
+                }
+            });
+        });
+    }
+}
+
+// Inicializar al cargar la página
+window.onload = generarMalla;
