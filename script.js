@@ -171,25 +171,26 @@ function generarMalla() {
 
 // Aprobar/desaprobar ramos
 function toggleRamo(ramo) {
-    const ramoElement = [...document.querySelectorAll('.ramo')].find(el => el.textContent === ramo.nombre);
+    const ramoElement = [...document.querySelectorAll('.ramo')].find(el => 
+        el.textContent.trim().toLowerCase() === ramo.nombre.trim().toLowerCase()
+    );
     
-    if (ramoElement.classList.contains('bloqueado')) return; // No hacer nada si está bloqueado
+    if (!ramoElement || ramoElement.classList.contains('bloqueado')) return;
     
     if (!estadoRamos[ramo.nombre]) {
         // Aprobar ramo
         estadoRamos[ramo.nombre] = true;
         ramoElement.classList.add('aprobado');
         
-        // Desbloquear ramos dependientes
+        // Desbloquear ramos dependientes (comparando nombres en minúsculas y sin espacios extras)
         ramo.abre.forEach(ramoDependiente => {
             document.querySelectorAll('.ramo').forEach(el => {
-                if (el.textContent === ramoDependiente) {
+                if (el.textContent.trim().toLowerCase() === ramoDependiente.trim().toLowerCase()) {
                     el.classList.remove('bloqueado');
                 }
             });
         });
     }
 }
-
 // Inicializar al cargar la página
 window.onload = generarMalla;
