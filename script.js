@@ -17,7 +17,7 @@ const malla = {
                 {
                     nombre: "II Semestre",
                     ramos: [
-                        { nombre: "Introducción a la Gestion de Personas", abre: ["Tecnologia y Sistemas de Información", "Taller de Negocios", "Gestion de personas I"] },
+                        { nombre: "Introducción a la gestión de personas", abre: ["Tecnologia y Sistemas de Información", "Taller de Negocios", "Gestion de personas I"] },
                         { nombre: "Metodos Matematicos II", abre: ["Metodos Matematicos III", "Introducción a las Finanzas", "Introducción a la Macroeconomia"] },
                         { nombre: "Contabilidad", abre: ["Introduccion a las Finanzas", "Contabilidad Empresarial I", "Taller de Negocios"] },
                         { nombre: "Introducción a la Microeconomia", abre: ["Economia Aplicada"] },
